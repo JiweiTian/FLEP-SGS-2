@@ -39,11 +39,14 @@ using matr = vector<vd>;
 
 void cinv( Matrix RealA, Matrix ImagA, Matrix& RealAinv, Matrix& ImagAinv);
 void zdatas(int num, vd zd[], vd out[], int bus, matr G, matr B, matr bbus, bool hitlflag);
+
+/*
 int server();
 
 // data shared to server
 vd V_data, del_data;
 std::mutex mtx;
+*/
 
 void subtract(const vd &a, const vd &b, vd &c)
 {
@@ -115,6 +118,7 @@ double sumVector(vd A)
     return s;    
 }
 /*----------------------------------------------------------------------------------*/
+/*
 int get1 (double x){ return int(x); }
 int get2 (double x) {return int (0.5 + 100000*(x-get1(x)));}
 
@@ -181,7 +185,7 @@ int server()
 
     return 0;
 }
-
+*/
 /*----------------------------------------------------------------------------------*/
 
 
@@ -205,6 +209,7 @@ try
     }
     
     
+    SysData s9(SysTable::S9);
     SysData s14(SysTable::S14);
     SysData s30(SysTable::S30);
     SysData s57(SysTable::S57);
@@ -213,12 +218,14 @@ try
     unsigned int N=atoi(argv[1]);
     unsigned int bus= 0;
 
-    if ((N!=14) && (N!=30) && (N!=57))
+    if ((N!=9) && (N!=14) && (N!=30) && (N!=57))
         throw "Bad input IEEE system argument";
 
     if (hitlflag) {
         bus=atoi(argv[2]);
-        if ((N==14) && ((bus>0) && (bus<15)))
+        if ((N==9) && ((bus>0) && (bus<10)))
+            sn = &s9;
+        else if ((N==14) && ((bus>0) && (bus<15)))
             sn = &s14;
         else if ((N==30) && ((bus>0) && (bus<31)))
             sn = &s30;
@@ -227,7 +234,9 @@ try
         else
             throw "Bad input bus argument";
     } else {
-        if(N==14)
+        if(N==9)
+            sn = &s9;
+        else if(N==14)
             sn = &s14;
         else if (N==30)
             sn = &s30;
@@ -286,9 +295,11 @@ try
 
     vd zd[6], out[2];
 
+    /*
     std::thread * tserver = nullptr;
     if (hitlflag)
         tserver = new std::thread(server);
+    */
 
     for(int runs=0; runs<1000000; runs++) {
 
@@ -741,21 +752,24 @@ try
         cout << "---------------------------------------------" << endl;
 
 
+        /*
         mtx.lock();
         V_data = V;
         del_data = del;
         mtx.unlock();
+        */
         V.clear();
         del.clear();
         E.clear();
     }
 
+    /*
     if( tserver )
     {
         tserver->join();
         delete tserver;
     }
-
+    */
     return 0;
 }
 catch (const char * e)

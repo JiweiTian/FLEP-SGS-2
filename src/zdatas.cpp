@@ -69,7 +69,7 @@ void zdatas(int num, vd zd[], vd out[], int bus, matr G, matr B, matr bbus, bool
     }
 
     void update(vd * v, int num, vd out[], int bus, matr G, matr B, matr bbus);
-    //if (hitlflag) 
+    if (hitlflag) 
         update(v,num,out,bus,G,B,bbus);
 
     for( int i=0; i<6; i++ )
