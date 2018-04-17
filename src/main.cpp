@@ -737,6 +737,13 @@ try
             hx.clear();          
         }
         
+
+        std::ofstream outfile;
+        outfile.open("files/output.txt");
+        outfile << tol << endl;
+        outfile.close();
+
+
         out[0].insert(out[0].end(), V.begin(), V.end());
         out[1].insert(out[1].end(), del.begin(), del.end());
 
