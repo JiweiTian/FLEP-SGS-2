@@ -117,78 +117,6 @@ double sumVector(vd A)
         s+=A[j];
     return s;    
 }
-/*----------------------------------------------------------------------------------*/
-/*
-int get1 (double x){ return int(x); }
-int get2 (double x) {return int (0.5 + 100000*(x-get1(x)));}
-
-void modbus_write_test(modbus_mapping_t *mb_mapping)
-
-{
-    mtx.lock();
-    if (V_data.empty()) {
-       mtx.unlock();
-       return;
-    }
-    
-    // 14-bus system HITL
-    for (unsigned int i=0; i < 5; i++) {
-        mb_mapping->tab_registers[i] = get1(V_data[i]*6900);
-    }
-    mb_mapping->tab_registers[5] = get1(V_data[5]*1380);
-    mb_mapping->tab_registers[6] = get1(V_data[6]*1380);
-    mb_mapping->tab_registers[7] = get1(V_data[7]*1800);
-    for (unsigned int i=8; i < 14; i++) {
-        mb_mapping->tab_registers[i] = get1(V_data[i]*1380);
-    }
-    mtx.unlock();
-}
-
-
-int server()
-{
-    int s = -1;
-    modbus_t *ctx;
-    modbus_mapping_t *mb_mapping = nullptr;
-
-    ctx = modbus_new_tcp("192.168.1.3", 1502);
-    mb_mapping = modbus_mapping_new(0, 0, 20, 0);
-
-    s = modbus_tcp_listen(ctx, 1);
-    modbus_tcp_accept(ctx, &s);
-
-    //modbus_read_test(ctx);
-
-    for (;;) {
-        uint8_t query[MODBUS_TCP_MAX_ADU_LENGTH];
-        int rc;
-
-        rc = modbus_receive(ctx, query);
-
-        if (rc > 0) { // rc is the query size
-            modbus_write_test(mb_mapping);
-            //modbus_read_test(mb_mapping);
-            modbus_reply(ctx, query, rc, mb_mapping);
-        } else if (rc == -1) { // Connection closed by the client or error
-            break;
-        }
-    }
-
-    cout << "Quit the loop: " << modbus_strerror(errno) << endl;
-
-    if (s != -1) {
-        close(s);
-    }
-    modbus_mapping_free(mb_mapping);
-    modbus_close(ctx);
-    modbus_free(ctx);
-
-    return 0;
-}
-*/
-/*----------------------------------------------------------------------------------*/
-
-
 
 int main(int argc, char* argv[])
 try 
@@ -295,13 +223,7 @@ try
 
     vd zd[6], out[2];
 
-    /*
-    std::thread * tserver = nullptr;
-    if (hitlflag)
-        tserver = new std::thread(server);
-    */
-
-    for(int runs=0; runs<1000000; runs++) {
+    for(int runs=0; runs<100000; runs++) {
 
         vd V(N,1), del(N,0);
         vd E,vi,pi,qi,pf,qf,typez,z,fbus,tbus,rii,idxm,hx;
@@ -629,6 +551,13 @@ try
                 H[tmp+i].insert(H[tmp+i].end(), H51[i].begin(), H51[i].end());
                 H[tmp+i].insert(H[tmp+i].end(), H52[i].begin(), H52[i].end());
             }
+
+            /*for(i=0;i<H.size();i++) {
+                for(j=0;j<H[0].size();j++) {
+                    cout << H[i][j] << " ";
+                }
+                cout << endl;
+            }*/
             
 
              //Gm = H'*inv(diagrii)*H; Gain Matrix, Gm..
@@ -759,24 +688,13 @@ try
         cout << "---------------------------------------------" << endl;
 
 
-        /*
-        mtx.lock();
-        V_data = V;
-        del_data = del;
-        mtx.unlock();
-        */
+
         V.clear();
         del.clear();
         E.clear();
     }
 
-    /*
-    if( tserver )
-    {
-        tserver->join();
-        delete tserver;
-    }
-    */
+
     return 0;
 }
 catch (const char * e)
