@@ -197,44 +197,57 @@ def updating_writer(a):
     f41 = unpack('f',pack('<HH',i82,i81))[0]    
     f42 = unpack('f',pack('<HH',i84,i83))[0]
 
+    #load (negative: subtract power from bus)
+    f21= -f21
+    f22 = -f22
+    f25 = -f25
+    f26 = -f26
+    f35 = -f35
+    f36= -f36
+    
     #print (f1,f2)
     x = ' ';
     # Write registers to file for the SE code
     f = open('../files/input9.txt','w')
     # f.write('{}, {}, {}, {}, {}, {}, {}, {} , {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} , {}, {}, {}, {}, {}, {}, {}, {}, {}, {} , {}, {}, {}, {}\n'.format(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24, f25, f26, f27, f28, f29, f30, f31, f32, f33, f34, f35, f36, f37, f38, f39, f40, f41, f42)) 
     f.write('1{}1{}{}{}1{}0{}9e-4\n'.format(5*x,5*x,f1,5*x,5*x,5*x))
-    f.write('2{}2{}{}{}1{}0{}1e-4\n'.format(5*x,5*x,f3,5*x,5*x,5*x))
-    f.write('3{}3{}{}{}1{}0{}1e-4\n'.format(5*x,5*x,f4,5*x,5*x,5*x))
-    f.write('4{}1{}{}{}2{}0{}9e-4\n'.format(5*x,5*x,f5,5*x,5*x,5*x))
-    f.write('5{}2{}{}{}2{}0{}1e-4\n'.format(5*x,5*x,f7,5*x,5*x,5*x))
-    f.write('6{}3{}{}{}2{}0{}1e-4\n'.format(5*x,5*x,f8,5*x,5*x,5*x))
-    f.write('7{}1{}{}{}3{}0{}9e-4\n'.format(5*x,5*x,f9,5*x,5*x,5*x))
-    f.write('8{}2{}{}{}3{}0{}1e-4\n'.format(5*x,5*x,f11,5*x,5*x,5*x))
-    f.write('9{}3{}{}{}3{}0{}1e-4\n'.format(5*x,5*x,f12,5*x,5*x,5*x))
-    f.write('10{}1{}{}{}4{}0{}9e-4\n'.format(5*x,5*x,f13,5*x,5*x,5*x))
-    f.write('11{}4{}{}{}4{}5{}64e-6\n'.format(5*x,5*x,f15,5*x,5*x,5*x))
-    f.write('12{}5{}{}{}4{}5{}64e-6\n'.format(5*x,5*x,f16,5*x,5*x,5*x))
-    f.write('13{}4{}{}{}4{}6{}64e-6\n'.format(5*x,5*x,f17,5*x,5*x,5*x))
-    f.write('14{}5{}{}{}4{}6{}64e-6\n'.format(5*x,5*x,f18,5*x,5*x,5*x))
-    f.write('15{}1{}{}{}5{}0{}9e-4\n'.format(5*x,5*x,f19,5*x,5*x,5*x))
-    f.write('16{}2{}{}{}5{}0{}1e-4\n'.format(5*x,5*x,f21,5*x,5*x,5*x))
-    f.write('17{}3{}{}{}5{}0{}1e-4\n'.format(5*x,5*x,f22,5*x,5*x,5*x))
-    f.write('18{}1{}{}{}6{}0{}9e-4\n'.format(5*x,5*x,f23,5*x,5*x,5*x))
-    f.write('19{}2{}{}{}6{}0{}1e-4\n'.format(5*x,5*x,f25,5*x,5*x,5*x))
+    f.write('2{}1{}{}{}2{}0{}9e-4\n'.format(5*x,5*x,f5,5*x,5*x,5*x))
+    f.write('3{}1{}{}{}3{}0{}9e-4\n'.format(5*x,5*x,f9,5*x,5*x,5*x))
+    f.write('4{}1{}{}{}4{}0{}9e-4\n'.format(5*x,5*x,f13,5*x,5*x,5*x))
+    f.write('5{}1{}{}{}5{}0{}9e-4\n'.format(5*x,5*x,f19,5*x,5*x,5*x))
+    f.write('6{}1{}{}{}6{}0{}9e-4\n'.format(5*x,5*x,f23,5*x,5*x,5*x))
+    f.write('7{}1{}{}{}7{}0{}9e-4\n'.format(5*x,5*x,f27,5*x,5*x,5*x))
+    f.write('8{}1{}{}{}8{}0{}9e-4\n'.format(5*x,5*x,f33,5*x,5*x,5*x))
+    f.write('9{}1{}{}{}9{}0{}9e-4\n'.format(5*x,5*x,f37,5*x,5*x,5*x))
+
+    f.write('10{}2{}{}{}1{}0{}1e-4\n'.format(5*x,5*x,f3,5*x,5*x,5*x))
+    f.write('11{}2{}{}{}2{}0{}1e-4\n'.format(5*x,5*x,f7,5*x,5*x,5*x))
+    f.write('12{}2{}{}{}3{}0{}1e-4\n'.format(5*x,5*x,f11,5*x,5*x,5*x))
+    f.write('13{}2{}{}{}5{}0{}1e-4\n'.format(5*x,5*x,f21,5*x,5*x,5*x))
+    f.write('14{}2{}{}{}6{}0{}1e-4\n'.format(5*x,5*x,f25,5*x,5*x,5*x))
+    f.write('15{}2{}{}{}8{}0{}1e-4\n'.format(5*x,5*x,f35,5*x,5*x,5*x))
+
+    f.write('16{}3{}{}{}1{}0{}1e-4\n'.format(5*x,5*x,f4,5*x,5*x,5*x))
+    f.write('17{}3{}{}{}2{}0{}1e-4\n'.format(5*x,5*x,f8,5*x,5*x,5*x))
+    f.write('18{}3{}{}{}3{}0{}1e-4\n'.format(5*x,5*x,f12,5*x,5*x,5*x))
+    f.write('19{}3{}{}{}5{}0{}1e-4\n'.format(5*x,5*x,f22,5*x,5*x,5*x))
     f.write('20{}3{}{}{}6{}0{}1e-4\n'.format(5*x,5*x,f26,5*x,5*x,5*x))
-    f.write('21{}1{}{}{}7{}0{}9e-4\n'.format(5*x,5*x,f27,5*x,5*x,5*x))
-    f.write('22{}4{}{}{}7{}8{}64e-6\n'.format(5*x,5*x,f29,5*x,5*x,5*x))
-    f.write('23{}5{}{}{}7{}8{}64e-6\n'.format(5*x,5*x,f30,5*x,5*x,5*x))
-    f.write('24{}4{}{}{}7{}5{}64e-6\n'.format(5*x,5*x,f31,5*x,5*x,5*x))
-    f.write('25{}5{}{}{}7{}5{}64e-6\n'.format(5*x,5*x,f32,5*x,5*x,5*x))
-    f.write('26{}1{}{}{}8{}0{}9e-4\n'.format(5*x,5*x,f33,5*x,5*x,5*x))
-    f.write('27{}2{}{}{}8{}0{}1e-4\n'.format(5*x,5*x,f35,5*x,5*x,5*x))
-    f.write('28{}3{}{}{}8{}0{}1e-4\n'.format(5*x,5*x,f36,5*x,5*x,5*x))
-    f.write('29{}1{}{}{}9{}0{}9e-4\n'.format(5*x,5*x,f37,5*x,5*x,5*x))
-    f.write('30{}4{}{}{}9{}8{}64e-6\n'.format(5*x,5*x,f39,5*x,5*x,5*x))
-    f.write('31{}5{}{}{}9{}8{}64e-6\n'.format(5*x,5*x,f40,5*x,5*x,5*x))
-    f.write('32{}4{}{}{}9{}6{}64e-6\n'.format(5*x,5*x,f41,5*x,5*x,5*x))
-    f.write('33{}5{}{}{}9{}6{}64e-6\n'.format(5*x,5*x,f42,5*x,5*x,5*x))
+    f.write('21{}3{}{}{}8{}0{}1e-4\n'.format(5*x,5*x,f36,5*x,5*x,5*x))
+    
+    
+    f.write('22{}4{}{}{}4{}5{}64e-6\n'.format(5*x,5*x,f15,5*x,5*x,5*x))
+    f.write('23{}4{}{}{}4{}6{}64e-6\n'.format(5*x,5*x,f17,5*x,5*x,5*x))
+    f.write('24{}4{}{}{}5{}7{}64e-6\n'.format(5*x,5*x,f31,5*x,5*x,5*x))
+    f.write('25{}4{}{}{}6{}9{}64e-6\n'.format(5*x,5*x,f41,5*x,5*x,5*x))
+    f.write('26{}4{}{}{}7{}8{}64e-6\n'.format(5*x,5*x,f29,5*x,5*x,5*x))
+    f.write('27{}4{}{}{}8{}9{}64e-6\n'.format(5*x,5*x,f39,5*x,5*x,5*x))
+    
+    f.write('28{}5{}{}{}4{}5{}64e-6\n'.format(5*x,5*x,f16,5*x,5*x,5*x))
+    f.write('29{}5{}{}{}4{}6{}64e-6\n'.format(5*x,5*x,f18,5*x,5*x,5*x))
+    f.write('30{}5{}{}{}5{}7{}64e-6\n'.format(5*x,5*x,f32,5*x,5*x,5*x))
+    f.write('31{}5{}{}{}6{}9{}64e-6\n'.format(5*x,5*x,f42,5*x,5*x,5*x))
+    f.write('32{}5{}{}{}7{}8{}64e-6\n'.format(5*x,5*x,f30,5*x,5*x,5*x))
+    f.write('33{}5{}{}{}8{}9{}64e-6\n'.format(5*x,5*x,f40,5*x,5*x,5*x))
     f.close()
 
     # Write registers to historian file with timestamp
@@ -244,7 +257,7 @@ def updating_writer(a):
     f.close()
 
     # Write registers to modbus/SCADA from a file of SE code
-    f = open('../files/output','r')
+    f = open('../files/output.txt','r')
     if f.mode == 'r':
         valuesString =f.read()
         valuesSE = valuesString.split(',')
