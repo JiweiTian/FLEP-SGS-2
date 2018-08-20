@@ -152,8 +152,7 @@ $ ./estimation 30 3
 
 ## Authors
 
-* **Harrys Kon** - [Personal Website](https://harrys.fyi/)
-
+* **Harrys**
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
