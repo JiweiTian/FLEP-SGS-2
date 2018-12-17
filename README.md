@@ -1,8 +1,20 @@
 # A Flexible and Low-cost Evaluation Platform for Smart Grid Systems Security - State Estimation Code
 :computer: C++ state estimation code for power systems :construction:
 
-This is the first attempt to publish C++ code related to power systems operation.   
-The aim is to create a benchmark library of emerging power system algorithms in order to evaluate them in any microprocessor platform. 
+This repo includes the state estimation C++ implementation of our paper "FLEP-SGS^2: a Flexible and Low-cost Evaluation Platform for Smart Grid Systems Security" at 10th Conference on Innovative Smart Grid Technologies (ISGT 2019).
+
+## Cite TreeEnc
+If you find our code useful, please consider citing
+```
+@inproceedings{konstantinou2019isgt,
+    title={FLEP-SGS$^2$: a Flexible and Low-cost Evaluation Platform for Smart Grid Systems Security},
+    author={Konstantinou, Charalambos and Sazos, Marios and Maniatakos, Michail},
+    booktitle={Innovative Smart Grid Technologies (ISGT), 2019 IEEE PES},
+    pages={1--5},
+    year={2019},
+    organization={IEEE}
+}
+```
 
 ## Getting Started
 
@@ -151,8 +163,8 @@ $ ./estimation 30 3
 
 
 ## Authors
+[Charalambos (Harrys) Konstantinou](https://ww2.eng.famu.fsu.edu/~konstantinou/)
 
-* **Harrys**
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
