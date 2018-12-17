@@ -1,4 +1,4 @@
-# $FLEP-SGS^2$: a Flexible and Low-cost Evaluation Platform for Smart Grid Systems Security
+# \begin{equation} $FLEP-SGS^2$ \end{equation}: a Flexible and Low-cost Evaluation Platform for Smart Grid Systems Security
 :computer: C++ state estimation code for power systems :construction:
 
 This is the first attempt to publish C++ code related to power systems operation.   
