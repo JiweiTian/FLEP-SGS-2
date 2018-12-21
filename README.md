@@ -3,7 +3,9 @@
 
 This repo includes the state estimation C++ implementation of our paper "FLEP-SGS^2: a Flexible and Low-cost Evaluation Platform for Smart Grid Systems Security" at 10th Conference on Innovative Smart Grid Technologies (ISGT 2019).
 
-## Cite FLEP-SGS
+The rest of the testbed code and data are available [here](https://github.com/momalab/FLEP-SGS2).
+
+## Cite FLEP-SGS2
 If you find our code useful, please consider citing
 ```
 @inproceedings{konstantinou2019isgt,
